@@ -78,6 +78,7 @@ class PaymentModel extends Model
         {
             $html .= '<input type="hidden" name="'.$key.'" value="'.$val.'" />';
         }
+        $html .= '</form></body></html>';
         return $html;
 //        $rValue = array();
 //
