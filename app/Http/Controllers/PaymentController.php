@@ -36,10 +36,10 @@ class PaymentController extends Controller
           'camp_type'           => '',
           'tracking_id'         => '',
           'terminal_type'       => '0',
-            'success_url'           => 'http://api-hs-test1234.herokuapp.com/carrier_success',
-            'cancel_url'            => route('carrier_cancel'),
-            'error_url'             => 'http://api-hs-test1234.herokuapp.com/carrier_error',
-            'pagecon_url'           => 'http://tabitomo.local/carrier_request',
+            'success_url'           => route('carrier_success'),
+            'cancel_url'            => route('carrier_error'),
+            'error_url'             => route('carrier_error'),
+            'pagecon_url'           => route('carrier_request'),
 //          'success_url'         => route('carrier_success'),
 //          'cancel_url'          => route('carrier_error'),
 //          'error_url'           => route('carrier_error'),
@@ -175,10 +175,6 @@ class PaymentController extends Controller
     public function carrier_error(Request $request)
     {
         dd($request);
-    }
-    public function carrier_cancel(Request $request)
-    {
-        dd($request->all());
     }
     public function carrier_request(Request $request)
     {
