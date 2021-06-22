@@ -22,7 +22,7 @@ class PaymentController extends Controller
           'cust_code'           => 'Merchant_TestUser_999999',
           'sps_cust_no'         => '',
           'sps_payment_no'      => '',
-          'order_id'            => 'dqwdasd2132dq2sd1',
+          'order_id'            => random_bytes(30),
           'item_id'             => 'T_0003',
           'pay_item_id'         => '',
           'item_name'           => '',
@@ -36,10 +36,10 @@ class PaymentController extends Controller
           'camp_type'           => '',
           'tracking_id'         => '',
           'terminal_type'       => '0',
-            'success_url'           => "http://stbfep.sps-system.com/MerchantPaySuccess.jsp",
-            'cancel_url'            => "http://stbfep.sps-system.com/MerchantPayCancel.jsp",
-            'error_url'             => "http://tabitomo.local/carrier_error_test",
-            'pagecon_url'           => "http://tabitomo.local/carrier_success_test",
+            'success_url'           => route('carrier_success'),
+            'cancel_url'            => route('carrier_cancel'),
+            'error_url'             => route('carrier_error'),
+            'pagecon_url'           => route('carrier_request'),
 //          'success_url'         => route('carrier_success'),
 //          'cancel_url'          => route('carrier_error'),
 //          'error_url'           => route('carrier_error'),
@@ -51,7 +51,7 @@ class PaymentController extends Controller
           'request_date'        => date('YmdHis'),
           'limit_second'        => '',
           'hashkey'             => 'c48e0e2c7d04f0954594f14c7801bd430ca6263e',
-        ];
+        ];dd($response['success_url']);
         $utf8 = '';
         foreach ($response as $value)
         {
@@ -170,18 +170,31 @@ class PaymentController extends Controller
     }
     public function carrier_success(Request $request)
     {
-        $fp = fopen('D:\Logs\RequestSuccess.txt', 'w');//mở file ở chế độ write-only
+        $fp = fopen('../storage/success.txt', 'w');//mở file ở chế độ write-only
         fwrite($fp, $request);
         fwrite($fp,date('YmdHis'));
         fclose($fp);
-
-        return response('OK,');
     }
     public function carrier_error(Request $request)
     {
-        $fp = fopen('D:\Logs\Error.txt', 'w');//mở file ở chế độ write-only
+        $fp = fopen('../storage/error.txt', 'w');//mở file ở chế độ write-only
         fwrite($fp, $request);
         fwrite($fp,date('YmdHis'));
         fclose($fp);
+    }
+    public function carrier_cancel(Request $request)
+    {
+        $fp = fopen('../storage/cancel.txt', 'w');//mở file ở chế độ write-only
+        fwrite($fp, $request);
+        fwrite($fp,date('YmdHis'));
+        fclose($fp);
+    }
+    public function carrier_request(Request $request)
+    {
+        $fp = fopen('../storage/request.txt', 'w');//mở file ở chế độ write-only
+        fwrite($fp, $request);
+        fwrite($fp,date('YmdHis'));
+        fclose($fp);
+        return 'OK,';
     }
 }
