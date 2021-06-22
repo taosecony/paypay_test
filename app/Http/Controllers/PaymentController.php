@@ -195,6 +195,6 @@ class PaymentController extends Controller
         fwrite($fp, $request);
         fwrite($fp,date('YmdHis'));
         fclose($fp);
-        return 'OK,';
+        echo 'OK,';
     }
 }
