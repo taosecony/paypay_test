@@ -22,7 +22,7 @@ class PaymentController extends Controller
           'cust_code'           => 'Merchant_TestUser_999999',
           'sps_cust_no'         => '',
           'sps_payment_no'      => '',
-          'order_id'            => random_bytes(30),
+          'order_id'            => rand(),
           'item_id'             => 'T_0003',
           'pay_item_id'         => '',
           'item_name'           => '',
