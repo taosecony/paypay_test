@@ -36,10 +36,10 @@ class PaymentController extends Controller
           'camp_type'           => '',
           'tracking_id'         => '',
           'terminal_type'       => '0',
-            'success_url'           => route('carrier_success'),
+            'success_url'           => 'http://api-hs-test1234.herokuapp.com/carrier_success',
             'cancel_url'            => route('carrier_cancel'),
-            'error_url'             => route('carrier_error'),
-            'pagecon_url'           => route('carrier_request'),
+            'error_url'             => 'http://api-hs-test1234.herokuapp.com/carrier_error',
+            'pagecon_url'           => 'http://tabitomo.local/carrier_request',
 //          'success_url'         => route('carrier_success'),
 //          'cancel_url'          => route('carrier_error'),
 //          'error_url'           => route('carrier_error'),
@@ -170,24 +170,15 @@ class PaymentController extends Controller
     }
     public function carrier_success(Request $request)
     {
-        $fp = fopen('../storage/success.txt', 'w');//mở file ở chế độ write-only
-        fwrite($fp, $request);
-        fwrite($fp,date('YmdHis'));
-        fclose($fp);
+        dd($request->all());
     }
     public function carrier_error(Request $request)
     {
-        $fp = fopen('../storage/error.txt', 'w');//mở file ở chế độ write-only
-        fwrite($fp, $request);
-        fwrite($fp,date('YmdHis'));
-        fclose($fp);
+        dd($request);
     }
     public function carrier_cancel(Request $request)
     {
-        $fp = fopen('../storage/cancel.txt', 'w');//mở file ở chế độ write-only
-        fwrite($fp, $request);
-        fwrite($fp,date('YmdHis'));
-        fclose($fp);
+        dd($request->all());
     }
     public function carrier_request(Request $request)
     {
@@ -195,6 +186,6 @@ class PaymentController extends Controller
         fwrite($fp, $request);
         fwrite($fp,date('YmdHis'));
         fclose($fp);
-        echo 'OK,';
+        return  'OK,';
     }
 }

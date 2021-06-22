@@ -1,0 +1,19 @@
+GET /carrier_success HTTP/1.1
+Accept:                    text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding:           gzip, deflate, br
+Accept-Language:           vi-VN,vi;q=0.9,fr-FR;q=0.8,fr;q=0.7,en-US;q=0.6,en;q=0.5
+Cache-Control:             max-age=0
+Connection:                keep-alive
+Cookie:                    XSRF-TOKEN=eyJpdiI6IldLRkoycXJSbFN4MVI5aWwyWUdBYUE9PSIsInZhbHVlIjoiYXpVSlIycjlpbzRQcXc5UzhhVFIxS3BlMFo1OERQSnpVXC83elBPQ1p6MFpTU1RlVlVzaHoxV1pTTnpYcG1PVFkiLCJtYWMiOiIyOGEyZTVkODVmODc4YTIxY2M2Njg0MWQ2NTI3MmJjZDg5MzhkNzc3NjRhODgwODQ4YTVhNzFhZjlkM2M3MmZjIn0%3D; laravel_session=eyJpdiI6IlwvM2hwMWlvaXc0akR3Q052OGtuMUt3PT0iLCJ2YWx1ZSI6IjBIcVh2TkhRNTRCOTJwTkhpZjg3K0xZNFhsckJHNXVBQlFpUXBQYTl0QkFDYUZwK2ZOMEo0a3JiXC80azhVelI5IiwibWFjIjoiMjMyNjdmNDIzNTZmYWJmM2ZkOGQ3YTg1NjNmODBmOTFhNjQ5MTM0NzAxNjc2ZDFlYTU3NjZmZGRkN2Q0ZTk1NyJ9
+Host:                      127.0.0.1:8000
+Sec-Ch-Ua:                 " Not;A Brand";v="99", "Google Chrome";v="91", "Chromium";v="91"
+Sec-Ch-Ua-Mobile:          ?0
+Sec-Fetch-Dest:            document
+Sec-Fetch-Mode:            navigate
+Sec-Fetch-Site:            none
+Sec-Fetch-User:            ?1
+Upgrade-Insecure-Requests: 1
+User-Agent:                Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36
+Cookie: XSRF-TOKEN=oZglv7IoJML4zRE9QnqX4Rw5Mop59rkISP2h5aVg; laravel_session=o5vONTqtgzcpF5Rny4dd9Vx05zAjT2Lq75DSQ4fb
+
+20210622110711
