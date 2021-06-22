@@ -51,7 +51,7 @@ class PaymentController extends Controller
           'request_date'        => date('YmdHis'),
           'limit_second'        => '',
           'hashkey'             => 'c48e0e2c7d04f0954594f14c7801bd430ca6263e',
-        ];dd($response['success_url']);
+        ];
         $utf8 = '';
         foreach ($response as $value)
         {
