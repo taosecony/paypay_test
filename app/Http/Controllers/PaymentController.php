@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\PaymentModel;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class PaymentController extends Controller
 {
@@ -39,7 +40,7 @@ class PaymentController extends Controller
             'success_url'           => route('carrier_success'),
             'cancel_url'            => route('carrier_error'),
             'error_url'             => route('carrier_error'),
-            'pagecon_url'           => route('carrier_request'),
+            'pagecon_url'           => 'http://paypay2.herokuapp.com/carrier_request',
 //          'success_url'         => route('carrier_success'),
 //          'cancel_url'          => route('carrier_error'),
 //          'error_url'           => route('carrier_error'),
@@ -170,24 +171,40 @@ class PaymentController extends Controller
     }
     public function carrier_success(Request $request)
     {
-        $fp = fopen('../storage/success.txt', 'w');//mở file ở chế độ write-only
-        fwrite($fp, $request);
-        fwrite($fp,date('YmdHis'));
-        fclose($fp);
+        try {
+            $fp = fopen('./storage/success.txt', 'w');//mở file ở chế độ write-only
+            fwrite($fp, $request);
+            fwrite($fp,date('YmdHis'));
+            fclose($fp);
+            return "ok";
+        }catch (Exception $exception){
+            return 'false';
+        }
+
     }
     public function carrier_error(Request $request)
     {
-        $fp = fopen('../storage/error.txt', 'w');//mở file ở chế độ write-only
-        fwrite($fp, $request);
-        fwrite($fp,date('YmdHis'));
-        fclose($fp);
+        try {
+            $fp = fopen('./storage/error.txt', 'w');//mở file ở chế độ write-only
+            fwrite($fp, $request);
+            fwrite($fp,date('YmdHis'));
+            fclose($fp);
+            return "ok";
+        }catch (Exception $exception){
+            return 'false';
+        }
     }
     public function carrier_request(Request $request)
     {
-        $fp = fopen('../storage/request.txt', 'w');//mở file ở chế độ write-only
-        fwrite($fp, $request);
-        fwrite($fp,date('YmdHis'));
-        fclose($fp);
-        return  'OK,';
+        try{
+            $fp = fopen('./storage/request.txt', 'w');//mở file ở chế độ write-only
+            fwrite($fp, $request);
+            fwrite($fp,date('YmdHis'));
+            fclose($fp);
+            return  'OK,';
+        }catch (Exception $e){
+            return 'NG';
+        }
+
     }
 }
