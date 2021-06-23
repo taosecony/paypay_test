@@ -176,7 +176,12 @@ class PaymentController extends Controller
             fwrite($fp, $request);
             fwrite($fp,date('YmdHis'));
             fclose($fp);
-            return "ok";
+
+            $fp = fopen('../storage/success.txt', 'r');//mở file ở chế độ write-only
+            $content = fread($fp,4096);
+            echo $content;
+            fclose($fp);
+
         }catch (Exception $exception){
             return 'false';
         }
@@ -186,10 +191,14 @@ class PaymentController extends Controller
     {
         try {
             $fp = fopen('../storage/error.txt', 'w');//mở file ở chế độ write-only
-            fwrite($fp, $request);
+            fwrite($fp,$request);
             fwrite($fp,date('YmdHis'));
             fclose($fp);
-            return "ok";
+
+            $fp = fopen('../storage/error.txt', 'r');
+            $content = fread($fp,4096);
+            echo $content;
+            fclose($fp);
         }catch (Exception $exception){
             return 'false';
         }
