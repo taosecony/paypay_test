@@ -17,7 +17,7 @@ class PaymentController extends Controller
     public function sendRequest(Request $request)
     {
         $response = [
-          'pay_method'          => 'paypay',
+          'pay_method'          => 'softbank2',
           'merchant_id'         => '30132',
           'service_id'          => '001',
           'cust_code'           => 'Merchant_TestUser_999999',
