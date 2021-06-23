@@ -213,7 +213,7 @@ class PaymentController extends Controller
 
             $fp = fopen('../storage/request.txt', 'r');
             $content = fread($fp,4096);
-
+            fclose($fp);
             return  'OK,';
         }catch (Exception $e){
             return 'NG';
