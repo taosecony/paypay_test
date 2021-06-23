@@ -172,7 +172,7 @@ class PaymentController extends Controller
     public function carrier_success(Request $request)
     {
         try {
-            $fp = fopen('./storage/success.txt', 'w');//mở file ở chế độ write-only
+            $fp = fopen('/storage/success.txt', 'w');//mở file ở chế độ write-only
             fwrite($fp, $request);
             fwrite($fp,date('YmdHis'));
             fclose($fp);
@@ -185,7 +185,7 @@ class PaymentController extends Controller
     public function carrier_error(Request $request)
     {
         try {
-            $fp = fopen('./storage/error.txt', 'w');//mở file ở chế độ write-only
+            $fp = fopen('/storage/error.txt', 'w');//mở file ở chế độ write-only
             fwrite($fp, $request);
             fwrite($fp,date('YmdHis'));
             fclose($fp);
@@ -197,7 +197,7 @@ class PaymentController extends Controller
     public function carrier_request(Request $request)
     {
         try{
-            $fp = fopen('./storage/request.txt', 'w');//mở file ở chế độ write-only
+            $fp = fopen('/storage/request.txt', 'w');//mở file ở chế độ write-only
             fwrite($fp, $request);
             fwrite($fp,date('YmdHis'));
             fclose($fp);
