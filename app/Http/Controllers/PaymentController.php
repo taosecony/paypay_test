@@ -206,7 +206,7 @@ class PaymentController extends Controller
     public function carrier_request(Request $request)
     {
         $response = $request->all();
-        if ($response && !empty($request['merchant_id']))
+        if ($response && !empty($request['merchant_id'])&& $request['merchant_id'] == '30132')
         {
             return 'OK,';
         }else{
