@@ -73,7 +73,8 @@ class PaymentModel extends Model
         $html = '';
         $html .= '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head><title></title></head>';
         $html .= '<body onload="javascript:document.forms['."'form1'".'].submit();">';
-        $html .= '<form action="https://stbfep.sps-system.com/f01/FepBuyInfoReceive.do" method="post" id="form1">';
+//        $html .= '<form action="https://stbfep.sps-system.com/f01/FepBuyInfoReceive.do" method="post" id="form1">';
+        $html .= '<form action="https://stbfep.sps-system.com/Extra/BuyRequestAction.do" method="post" id="form1">';
         foreach ($param_list as $key => $val)
         {
             $html .= '<input type="hidden" name="'.$key.'" value="'.$val.'" />';

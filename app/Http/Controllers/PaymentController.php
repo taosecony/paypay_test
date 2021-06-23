@@ -205,17 +205,11 @@ class PaymentController extends Controller
     }
     public function carrier_request(Request $request)
     {
-        try{
-            $fp = fopen('../storage/request.txt', 'w');//mở file ở chế độ write-only
-            fwrite($fp, $request);
-            fwrite($fp,date('YmdHis'));
-            fclose($fp);
-
-            $fp = fopen('../storage/request.txt', 'r');
-            $content = fread($fp,4096);
-            fclose($fp);
-            return  'OK,';
-        }catch (Exception $e){
+        $response = $request->all();
+        if ($response && !empty($request['merchant_id']))
+        {
+            return 'OK,';
+        }else{
             return 'NG';
         }
 
