@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 
 use App\PaymentModel;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
 
 class PaymentController extends Controller
 {
@@ -17,7 +16,7 @@ class PaymentController extends Controller
     public function sendRequest(Request $request)
     {
         $response = [
-          'pay_method'          => 'softbank2',
+          'pay_method'          => 'paypay',
           'merchant_id'         => '30132',
           'service_id'          => '001',
           'cust_code'           => 'Merchant_TestUser_999999',
@@ -60,6 +59,7 @@ class PaymentController extends Controller
         }
         $response['sps_hashcode'] = sha1($utf8);
         $url = "https://stbfep.sps-system.com/Extra/BuyRequestAction.do";
+//        $url = "https://stbfep.sps-system.com/f01/FepBuyInfoReceive.do";
 
 //        $encryptValue = [
 //            'MerchantPass'    => 'u8YyNvFz',
@@ -170,7 +170,7 @@ class PaymentController extends Controller
         return true;
     }
     public function carrier_success(Request $request)
-    {
+    {dd($request->all());
         try {
             $fp = fopen('../storage/success.txt', 'w');//mở file ở chế độ write-only
             fwrite($fp, $request);
